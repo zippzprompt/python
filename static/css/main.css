@@ -1,0 +1,184 @@
+html, body{
+    height:100%;
+    font-family: "Raleway", serif;
+    font-weight:weight;
+}
+body{
+    display:flex;
+    flex-direction: column;
+}
+
+/* Styling for modal */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* background: #f8f9fa; */
+}
+
+.modal-header {
+    background: linear-gradient(to left, #007bff, #145396) ;
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+/* Input and label styling */
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Radio button styling */
+.form-check-input {
+    accent-color: #007bff;
+}
+
+.form-check-label {
+    margin-left: 5px;
+    color: #555;
+}
+
+/* Button Styling */
+.btn-primary {
+    background: #007bff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-secondary {
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Modal footer styling */
+.modal-footer {
+    border-top: none;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal{
+    background: linear-gradient(135deg, #61052b , #cf184f)
+}
+.content{
+    flex:1;
+}
+/* Navbar */
+.navbar{
+    animation: fadeIn 1s ease-in-out;
+}
+.navbar-nav .nav-link{
+    color: #343a40;
+    position:relative;
+    transition: all 0.3s ease;
+}
+.navbar-nav .nav-link:hover{
+    color: #008fc7;
+}
+/* animasi garis bawah */
+.nav-link::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background-color: #008fc7;
+    transition: width 0.3s ease-in-out;
+}
+.nav-link:hover::after{
+    width:100%;
+}
+.nav-link:hover{
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0;
+        transform : translateY(-20px)
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Hero */
+.hero{
+    animation: hero 1s ease-in-out;
+}
+@keyframes hero {
+    from{
+        opacity: 0;
+        transform : translateX(-30px)
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.pircing-card{
+    box-shadow: 1px 5px 10px #969696;
+}
+.card-flip:hover .pircing-card {
+    background-color: rgb(255, 0, 106);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Pastikan list-group-item memiliki transisi yang sama */
+.card-flip:hover .list-group-item {
+    background-color: rgb(255, 0, 106);
+    color: white;
+    border-color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mengubah warna ikon FontAwesome menjadi putih saat hover */
+.card-flip:hover .list-group-item i {
+    color: white;
+    transition: color 0.3s ease;
+}
+.card-flip:hover .text-primary{
+    color:#fff !important;
+}
+
+/* footer */
+ .footer{
+    background-color: #343a40;
+    color:#fff;
+    padding:20px 0;
+    text-align:center; 
+}

@@ -1,0 +1,223 @@
+{% extends "main.html" %}
+{% block content %}
+
+<!-- Landing Page -->
+<div class="content d-flex align-items-center justify-content-center min-vh-90 p-3">
+    <div class="container hero text-left">
+        <div class="row p-3 mx-auto">
+            <!-- Teks Selamat Datang -->
+            <div class="col-lg-8">
+                <h4>Selamat Datang</h4>
+                <h2>Sistem Rekomendasi Paket WiFi</h2>
+                <p>Kami siap membantu Anda menemukan paket WiFi yang paling sesuai dengan kebutuhan Anda, 
+                    memastikan koneksi internet yang cepat, stabil, dan tepat untuk mendukung aktivitas sehari-hari.</p>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Cari Paket
+                </button>
+            </div>
+            <!-- Gambar -->
+            <div class="col-lg-4">
+                <img src="{{ url_for('static', filename='img/kuis.jpg') }}" alt="Gambar Kuis" class="img-fluid rounded">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Form Action -->
+<form action="{{url_for('rekomendasi')}}" method="POST">
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Rekomendasi Paket WiFi</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <!-- Jumlah Pengguna -->
+                      <div class="mb-3">
+                          <label for="JumlahPengguna" class="form-label">Masukkan Jumlah Pengguna</label>
+                          <input type="number" class="form-control" id="JumlahPengguna" name="Jumlah_Pengguna" placeholder="1, 2, 3, 4 ..." required>
+                      </div>
+                      <!-- Penggunaan Harian / Jam -->
+                      <div class="mb-3">
+                          <label for="PenggunaanHarian" class="form-label">Rata-rata penggunaan internet (jam/hari)</label>
+                          <input type="number" class="form-control" id="PenggunaanHarian" name="Pengguna_Harian" placeholder="1, 2, 3, 4...">
+                      </div>
+                      <!-- Aktivitas yang sering dilakukan -->
+                      <div class="mb-3">
+                          <label class="form-label">Aktivitas utama yang sering dilakukan   </label>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Aktivitas_Utama" id="aktivitas_utama" value="1">
+                              <label class="form-check-label" for="aktivitas">Browsing, Media Sosial, dan Email.</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Aktivitas_Utama" id="aktivitas_utama" value="2">
+                            <label class="form-check-label" for="aktivitas">Streaming Video, Meeting Online, Pekerjaan Remote</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="Aktivitas_Utama" id="aktivitas_utama" value="3">
+                          <label class="form-check-label" for="aktivitas">Gaming Online, Streaming 4K, Penggunaan Berat Lain</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="Aktivitas_Utama" id="aktivitas_utama" value="4">
+                        <label class="form-check-label" for="aktivitas">Kebutuhan Usaha, Smart Home, Kantor Kecil, Keluarga Besar</label>
+                    </div>
+                      </div>
+                      <!-- Perangkat yang digunakan -->
+                      <div class="mb-3">
+                          <label class="form-label">Perangkat yang sering digunakan </label>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Perangkat_Utama" id="perangkat_utama" value="1">
+                              <label class="form-check-label" for="perangkat_utama">Dekstop</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Perangkat_Utama" id="perangkat_utama" value="2">
+                            <label class="form-check-label" for="perangkat_utama">Laptop</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="Perangkat_Utama" id="perangkat_utama" value="3">
+                          <label class="form-check-label" for="perangkat_utama">Tablet</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="Perangkat_Utama" id="perangkat_utama" value="4">
+                          <label class="form-check-label" for="perangkat_utama">Smartphone</label>
+                        </div>
+                        
+                      
+                      </div>
+                      <!-- Kecepatan Internet -->
+                      <div class="mb-3">
+                          <label class="form-label">Kebutuhan kecepatan internet</label>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="Kecepatan" id="kecepatan" value="1">
+                              <label class="form-check-label" for="kecepatan">Rendah</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Kecepatan" id="kecepatan" value="2">
+                            <label class="form-check-label" for="kecepatan">Sedang</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Kecepatan" id="kecepatan" value="3">
+                            <label class="form-check-label" for="kecepatan">Cepat</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="Kecepatan" id="kecepatan" value="4">
+                            <label class="form-check-label" for="kecepatan">Super Cepat</label>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                  <button type="submit" class="btn btn-primary" data-bs-target="#myModal">Lihat Rekomendasi</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</form>
+
+<!-- Modal Paket -->
+ <!-- Modal Paket Rekomendasi -->
+<div class="modal fade" id="paketModal" tabindex="-1" aria-labelledby="paketModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paketModalLabel"><i class="fa-solid fa-wifi"></i> Rekomendasi Paket Anda</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="paketModalBody">
+            <!-- Paket 1-->
+            <div class="col-md-4 mb-4 card-flip paket" id="D">
+                        <div class="card pircing-card text-center p-3">
+                           <h4 class="card-title mt-4"> Paket D</h4>
+                           <div class="card-body">
+                               <p class="card-text">Full Fiber To The Home </p>
+                               <h3 class="fw-bold ">Rp. 500.000<span class="fs-6">/bulan</span></h3>
+                               <ul class="list-group list-group-flush">
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Unlimited Kuota</li>
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Kecepatan Upto <span class="text-primary fw-bold">100Mbps</span></li>
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Pengguna Banyak, Kebutuhan Usaha, Smart Home</li>
+                               </ul>
+                               <button class="btn btn-primary w-25">Beli</button>
+                           </div>
+                       </div>
+            </div>
+            <!-- Paket 2-->
+            <div class="col-md-4 mb-4 card-flip paket" id="C">
+                        <div class="card pircing-card text-center p-3">
+                           <h4 class="card-title mt-4"> Paket B</h4>
+                           <div class="card-body">
+                               <p class="card-text">Full Fiber To The Home </p>
+                               <h3 class="fw-bold ">Rp. 350.000<span class="fs-6">/bulan</span></h3>
+                               <ul class="list-group list-group-flush">
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Unlimited Kuota</li>
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Kecepatan Upto <span class="text-primary fw-bold">50Mbps</span></li>
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Gaming online, streaming 4K, dan penggunaan berat lainnya</li>
+                               </ul>
+                               <button class="btn btn-primary w-25">Beli</button>
+                           </div>
+                       </div>
+            </div>
+            <!-- Paket 3-->
+            <div class="col-md-4 mb-4 card-flip paket" id="B">
+                        <div class="card pircing-card text-center p-3">
+                           <h4 class="card-title mt-4"> Paket B</h4>
+                           <div class="card-body">
+                               <p class="card-text text-muted">Full Fiber To The Home </p>
+                               <h3 class="fw-bold ">Rp. 150.000<span class="fs-6">/bulan</span></h3>
+                               <ul class="list-group list-group-flush">
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Unlimited Kuota</li>
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Kecepatan Upto <span class="text-primary fw-bold">30Mbps</span></li>
+                                   <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Streaming video HD, meeting online, dan pekerjaan remote</li>
+                                </ul>
+                                <button class="btn btn-primary w-25">Beli</button>
+                           </div>
+                       </div>
+            </div>
+            <!-- Paket 4 -->
+            <div class="col-md-4 mb-4 card-flip paket" id="A">
+                         <div class="card pircing-card text-center p-3">
+                            <h4 class="card-title mt-4"> Paket A</h4>
+                            <div class="card-body">
+                                <p class="card-text text-muted">Full Fiber To The Home </p>
+                                <h3 class="fw-bold ">Rp. 100.000<span class="fs-6">/bulan</span></h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Unlimited Kuota</li>
+                                    <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Kecepatan Upto <span class="text-primary fw-bold">10Mbps</span></li>
+                                    <li class="list-group-item"><i class="fa-solid fa-circle-check"></i> Browsing, Media sosial, dan Kebutuhan Ringan Lainnya</li>
+                                </ul>
+                                <button class="btn btn-primary w-25">Beli</button>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+        </div> -->
+      </div>
+    </div>
+</div>
+
+<!-- Script Js -->
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+            let paketTerpilih = "{{ prediksi }}";
+            let paketDiv = document.getElementById(paketTerpilih);
+
+            // Sembunyikan semua paket terlebih dahulu
+            document.querySelectorAll(".paket").forEach(div => div.style.display = "none");
+
+            if (paketDiv) {
+                document.getElementById("paketModalBody").innerHTML = paketDiv.innerHTML;
+                let paketModal = new bootstrap.Modal(document.getElementById("paketModal"));
+                paketModal.show();
+            }
+        });
+</script>
+        
+     
+
+{% endblock %}
